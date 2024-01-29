@@ -1,9 +1,16 @@
-import { View, Text } from 'react-native';
+import { View, Text, ImageBackground, StyleSheet } from 'react-native';
 
 export default function CharactersScreen() {
     return (
-        <View>
-            <Text>Characters Screen</Text>
+        <View style={styles.container}>
+            <ImageBackground source={require('../assets/characters-background.jpg')} style={styles.container}>
+            </ImageBackground>
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+    },
+});
