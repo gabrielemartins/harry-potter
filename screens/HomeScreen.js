@@ -22,7 +22,7 @@ export default function HomeScreen() {
 
     return (
         <View style={styles.container}>
-            <ScrollView horizontal={true}>
+            <ScrollView horizontal={true} contentContainerStyle={styles.menuCards}>
                 <MenuOptionCard
                     image={screens.characters.image}
                     title={screens.characters.title}
@@ -46,6 +46,10 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+    },
+    menuCards: {
+        flex: 1,
+        alignItems: 'center',
         flexDirection: 'row',
     },
 });
