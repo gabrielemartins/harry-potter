@@ -1,4 +1,4 @@
-import { View, StyleSheet } from 'react-native';
+import { View, ScrollView, StyleSheet } from 'react-native';
 import MenuOptionCard from '../components/MenuOptionCard';
 
 export default function HomeScreen() {
@@ -22,21 +22,23 @@ export default function HomeScreen() {
 
     return (
         <View style={styles.container}>
-            <MenuOptionCard
-                image={screens.spells.image}
-                title={screens.spells.title}
-                subtitle={screens.spells.subtitle}
-            />
-            <MenuOptionCard
-                image={screens.characters.image}
-                title={screens.characters.title}
-                subtitle={screens.characters.subtitle}
-            />
-            <MenuOptionCard
-                image={screens.potions.image}
-                title={screens.potions.title}
-                subtitle={screens.potions.subtitle}
-            />
+            <ScrollView horizontal={true}>
+                <MenuOptionCard
+                    image={screens.characters.image}
+                    title={screens.characters.title}
+                    subtitle={screens.characters.subtitle}
+                />
+                <MenuOptionCard
+                    image={screens.spells.image}
+                    title={screens.spells.title}
+                    subtitle={screens.spells.subtitle}
+                />
+                <MenuOptionCard
+                    image={screens.potions.image}
+                    title={screens.potions.title}
+                    subtitle={screens.potions.subtitle}
+                />
+            </ScrollView>
         </View>
     );
 }
@@ -44,8 +46,6 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
         flexDirection: 'row',
     },
 });
