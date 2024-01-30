@@ -4,19 +4,18 @@ export default function MenuOptionCard(props) {
     return (
         <View style={styles.container}>
             <ImageBackground source={props.image} style={styles.imageBackground}>
-            <View style={styles.infosContainer}>
-                <Text style={styles.title}>{props.title}</Text>
-                <Text style={styles.subtitle}>{props.subtitle}</Text>
-            </View>
-           </ImageBackground>
+                <View style={styles.infosContainer}>
+                    <Text style={styles.title}>{props.title}</Text>
+                    <Text style={styles.subtitle}>{props.subtitle}</Text>
+                </View>
+            </ImageBackground>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-        height: '50%',
-        width: '70%',
+        flex: 1,
     },
     imageBackground: {
         flex: 1,
