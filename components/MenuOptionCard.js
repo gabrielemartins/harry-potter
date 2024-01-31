@@ -16,6 +16,12 @@ export default function MenuOptionCard(props) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5,
+        borderRadius: 40,
     },
     imageBackground: {
         flex: 1,
