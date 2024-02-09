@@ -1,20 +1,24 @@
-import { View, Text, ImageBackground, StyleSheet } from 'react-native';
+import { View, Text, ImageBackground, StyleSheet} from 'react-native';
 
 export default function MenuOptionCard(props) {
     return (
         <View style={styles.container}>
-            <ImageBackground source={props.image} style={styles.imageBackground}>
-                <View style={styles.infosContainer}>
-                    <Text style={styles.title}>{props.title}</Text>
-                    <Text style={styles.subtitle}>{props.subtitle}</Text>
-                </View>
-            </ImageBackground>
+            <View style={styles.cardContainer}>
+                <ImageBackground source={props.image} style={styles.imageBackground}>
+                    <View style={styles.infosContainer}>
+                        <Text style={styles.title}>{props.title}</Text>
+                        <Text style={styles.subtitle}>{props.subtitle}</Text>
+                    </View>
+                </ImageBackground>
+            </View>
         </View>
     );
 }
-
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
+    },
+    cardContainer: {
         flex: 1,
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 },
