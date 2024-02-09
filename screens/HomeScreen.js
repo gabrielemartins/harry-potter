@@ -20,7 +20,12 @@ export default function HomeScreen() {
             image: require('../assets/potions-background.jpg'),
             title: 'Potions',
             subtitle: 'List of all potions in the Harry Potter World.',
-        }
+        },
+        books: {
+            image: require('../assets/books-background.jpg'),
+            title: 'Books',
+            subtitle: 'List of all books of the Harry Potter Series.',
+        },
     };
     return (
         <View style={styles.container}>
