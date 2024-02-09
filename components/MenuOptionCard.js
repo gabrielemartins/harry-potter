@@ -1,4 +1,4 @@
-import { View, Text, ImageBackground, StyleSheet} from 'react-native';
+import { View, Text, ImageBackground, StyleSheet, Pressable } from 'react-native';
 
 export default function MenuOptionCard(props) {
     return (
@@ -10,6 +10,9 @@ export default function MenuOptionCard(props) {
                         <Text style={styles.subtitle}>{props.subtitle}</Text>
                     </View>
                 </ImageBackground>
+                <Pressable onPress={() => {console.log("Pressed")}} style={styles.revelioButton}>
+                    <Text style={styles.revelioButtonText}>Revelio</Text>
+                </Pressable>
             </View>
         </View>
     );
@@ -36,7 +39,7 @@ const styles = StyleSheet.create({
     infosContainer: {
         flex: 1,
         justifyContent: 'flex-end',
-        marginBottom: '20%',
+        marginBottom: '25%',
         marginLeft: '5%',
     },
     title: {
@@ -48,5 +51,20 @@ const styles = StyleSheet.create({
         fontSize: 12,
         color: '#F5F5F5',
         marginLeft: '1%',
+    },
+    revelioButton: {
+        position: 'absolute',
+        width: '100%',
+        bottom: 0,
+        backgroundColor: '#8B41F2',
+        padding: 15,
+        borderBottomRightRadius: 40,
+        borderBottomLeftRadius: 40,
+    },
+    revelioButtonText: {
+        color: '#F5F5F5',
+        fontStyle: 'italic',
+        fontWeight: 'bold',
+        textAlign: 'center',
     },
 });
