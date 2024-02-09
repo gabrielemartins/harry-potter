@@ -36,12 +36,12 @@ const styles = StyleSheet.create({
         marginLeft: '5%',
     },
     title: {
-        fontSize: '220%',
+        fontSize: 30,
         fontWeight: 'bold',
         color: '#8B41F2',
     },
     subtitle: {
-        fontSize: '70%',
+        fontSize: 12,
         color: '#F5F5F5',
         marginLeft: '1%',
     },
