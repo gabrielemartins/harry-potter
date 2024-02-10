@@ -1,8 +1,8 @@
-import HomeScreen from "./screens/HomeScreen";
+import CharactersScreen from './screens/CharactersScreen';
 
 export default function App() {
   return (
-    <HomeScreen />
+    <CharactersScreen />
   );
 }
 
