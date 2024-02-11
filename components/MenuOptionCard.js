@@ -64,7 +64,6 @@ const styles = StyleSheet.create({
     revelioButtonText: {
         color: '#F5F5F5',
         fontStyle: 'italic',
-        fontWeight: 'bold',
         textAlign: 'center',
     },
 });
