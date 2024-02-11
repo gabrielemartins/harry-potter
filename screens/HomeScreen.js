@@ -1,59 +1,68 @@
-import { View, ScrollView, StyleSheet, Animated, Dimensions } from 'react-native';
+import React, { useRef } from 'react';
+import { View, Text, StyleSheet, Animated, Dimensions } from 'react-native';
 import MenuOptionCard from '../components/MenuOptionCard';
 
-export default function HomeScreen() {
-    const scrollX = new Animated.Value(0);
-    let cardWidth = Dimensions.get('window').width * 0.7;
+const { width } = Dimensions.get('screen');
+const CARD_WIDTH = width * 0.8;
 
-    const screens = {
-        characters: {
-            image: require('../assets/characters-background.jpg'),
-            title: 'Characters',
-            subtitle: 'List of all characters in the Harry Potter World.',
-        },
-        spells: {
-            image: require('../assets/spells-background.jpg'),
-            title: 'Spells',
-            subtitle: 'List of all spells in the Harry Potter World.',
-        },
-        potions: {
-            image: require('../assets/potions-background.jpg'),
-            title: 'Potions',
-            subtitle: 'List of all potions in the Harry Potter World.',
-        },
-        books: {
-            image: require('../assets/books-background.jpg'),
-            title: 'Books',
-            subtitle: 'List of all books of the Harry Potter Series.',
-        },
-    };
+const screens = {
+    characters: {
+        image: require('../assets/characters-background.jpg'),
+        title: 'Characters',
+        subtitle: 'List of all characters in the Harry Potter World.',
+    },
+    spells: {
+        image: require('../assets/spells-background.jpg'),
+        title: 'Spells',
+        subtitle: 'List of all spells in the Harry Potter World.',
+    },
+    potions: {
+        image: require('../assets/potions-background.jpg'),
+        title: 'Potions',
+        subtitle: 'List of all potions in the Harry Potter World.',
+    },
+    books: {
+        image: require('../assets/books-background.jpg'),
+        title: 'Books',
+        subtitle: 'List of all books of the Harry Potter Series.',
+    },
+};
+
+export default function HomeScreen() {
+    const scrollX = useRef(new Animated.Value(0)).current;
+
     return (
         <View style={styles.container}>
             <Animated.ScrollView
-                horizontal={true}
-                contentContainerStyle={styles.menuCards}
+                horizontal
                 showsHorizontalScrollIndicator={false}
                 onScroll={Animated.event(
                     [{ nativeEvent: { contentOffset: { x: scrollX } } }],
                     { useNativeDriver: true }
                 )}
                 scrollEventThrottle={16}
+                contentContainerStyle={styles.menuCards}
             >
                 {Object.values(screens).map((screen, index) => {
                     const inputRange = [
-                        (index - 1) * cardWidth,
-                        index * cardWidth,
-                        (index + 1) * cardWidth
+                        (index - 1) * CARD_WIDTH,
+                        index * CARD_WIDTH,
+                        (index + 1) * CARD_WIDTH,
                     ];
-
                     const scale = scrollX.interpolate({
                         inputRange,
                         outputRange: [0.8, 1, 0.8],
-                        extrapolate: 'clamp'
+                        extrapolate: 'clamp',
                     });
 
                     return (
-                        <Animated.View key={index} style={[styles.cardContainer, { transform: [{ scale }] }]}>
+                        <Animated.View
+                            key={index}
+                            style={[
+                                styles.cardContainer,
+                                { transform: [{ scale }] },
+                            ]}
+                        >
                             <MenuOptionCard
                                 image={screen.image}
                                 title={screen.title}
@@ -72,12 +81,11 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     menuCards: {
-        flex: 1,
-        alignItems: 'center',
-        flexDirection: 'row',
+        marginTop: 20,
     },
     cardContainer: {
-        width: '80%',
-        height: '70%',
+        width: CARD_WIDTH,
+        height: '80%',
+        marginTop: 40,
     },
 });
