@@ -1,5 +1,5 @@
 import { View, StyleSheet, TextInput } from 'react-native';
-import React from 'react'; // Removed useState as it's no longer needed here
+import React from 'react';
 
 export default function SearchBar({ onChangeText }) {
     return (
@@ -7,7 +7,7 @@ export default function SearchBar({ onChangeText }) {
            <TextInput 
                style={styles.input} 
                placeholder="Search" 
-               onChangeText={onChangeText} // Use the prop here
+               onChangeText={onChangeText} 
            />
         </View>
     );
