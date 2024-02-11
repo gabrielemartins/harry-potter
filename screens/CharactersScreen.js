@@ -6,10 +6,11 @@ import { getCharacters } from "../Api";
 export default function CharactersScreen() {
     const [characters, setCharacters] = useState([]);
     const [filteredCharacters, setFilteredCharacters] = useState([]);
-    const [searchTerm, setSearchTerm] = useState(''); 
+    const [searchTerm, setSearchTerm] = useState('');
     const [loading, setLoading] = useState(true);
     const [loadingMore, setLoadingMore] = useState(true);
     const [page, setPage] = useState(0);
+    const [error, setError] = useState('');
 
     useEffect(() => {
         const fetchCharacters = async () => {
@@ -21,8 +22,11 @@ export default function CharactersScreen() {
                     return updatedCharacters;
                 });
                 setLoading(false);
+                setError('');
             } catch (error) {
                 console.error('Error fetching characters:', error);
+                setError(error.message);
+                setLoading(false);
             }
         }
         fetchCharacters();
@@ -47,13 +51,15 @@ export default function CharactersScreen() {
         <View style={styles.container}>
             <Text style={styles.pageTitle}>Characters</Text>
             <Text style={styles.pageSubtitle}>I swear I am not up to good</Text>
-            {loading ? (
+            {error ? (
+                <Text style={styles.errorMessage}>{error}</Text>
+            ) : loading ? (
                 <ActivityIndicator size="large" color="#0000ff" />
             ) : (
                 <View>
                     <SearchBar onChangeText={setSearchTerm} />
                     <FlatList
-                        data={filteredCharacters} // Use filteredCharacters here
+                        data={filteredCharacters}
                         keyExtractor={(item) => item.wiki}
                         renderItem={({ item }) => (
                             <Pressable onPress={() => Linking.openURL(item.attributes.wiki)}>
@@ -82,8 +88,6 @@ export default function CharactersScreen() {
         </View>
     );
 }
-
-
 
 const styles = StyleSheet.create({
     container: {
@@ -122,5 +126,10 @@ const styles = StyleSheet.create({
         fontSize: 18,
         color: '#8B41F2'
     },
-
+    errorMessage: {
+        color:'#FF2314',
+        fontSize: 16,
+        marginHorizontal: 30,
+        marginTop: 20,
+    },
 });
