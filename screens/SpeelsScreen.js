@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FlatList, Text, View, ActivityIndicator, Image, StyleSheet, Linking, Pressable } from "react-native";
+import { FlatList, Text, View, ActivityIndicator, Image, StyleSheet, Pressable } from "react-native";
 import * as WebBrowser from 'expo-web-browser';
 import SearchBar from "../components/SearchBar";
 import { getSpells } from "../Api";
