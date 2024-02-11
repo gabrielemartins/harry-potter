@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     pageTitle: {
         color: '#8B41F2',
         fontWeight: 'bold',
-        fontSize: 30,
+        fontSize: 40,
         marginHorizontal: 30,
         marginTop: 70,
     },
