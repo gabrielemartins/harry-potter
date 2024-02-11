@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FlatList, Text, View, ActivityIndicator, Image, StyleSheet, Linking, Pressable } from "react-native";
+import * as WebBrowser from 'expo-web-browser';
 import SearchBar from "../components/SearchBar";
 import { getCharacters } from "../Api";
 
@@ -62,7 +63,7 @@ export default function CharactersScreen() {
                         data={filteredCharacters}
                         keyExtractor={(item) => item.wiki}
                         renderItem={({ item }) => (
-                            <Pressable onPress={() => Linking.openURL(item.attributes.wiki)}>
+                            <Pressable onPress={() => WebBrowser.openBrowserAsync(item.attributes.wiki)}>
                                 <View style={styles.card}>
                                     {item.attributes.image ? (
                                         <Image source={{ uri: item.attributes.image }} style={styles.image} />
@@ -123,7 +124,7 @@ const styles = StyleSheet.create({
     },
     cardTitle: {
         fontWeight: 'bold',
-        fontSize: 18,
+        fontSize: 16,
         color: '#8B41F2'
     },
     errorMessage: {
