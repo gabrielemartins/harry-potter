@@ -98,8 +98,7 @@ export default function SpellsScreen() {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: '#0F071A',
+        flex: 1,   
     },
     pageTitle: {
         color: '#8B41F2',
