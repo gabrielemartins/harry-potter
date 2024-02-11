@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { FlatList, Text, View, ActivityIndicator, Image, StyleSheet, Linking, Pressable } from "react-native";
+import SearchBar from "../components/SearchBar";
 import { getCharacters } from "../Api";
 
 export default function CharactersScreen() {
     const [characters, setCharacters] = useState([]);
+    const [filteredCharacters, setFilteredCharacters] = useState([]);
+    const [searchTerm, setSearchTerm] = useState(''); 
     const [loading, setLoading] = useState(true);
     const [loadingMore, setLoadingMore] = useState(true);
     const [page, setPage] = useState(0);
@@ -12,7 +15,11 @@ export default function CharactersScreen() {
         const fetchCharacters = async () => {
             try {
                 const data = await getCharacters(page);
-                setCharacters(prevCharacters => [...prevCharacters, ...data]);
+                setCharacters(prevCharacters => {
+                    const updatedCharacters = [...prevCharacters, ...data];
+                    filterCharacters(updatedCharacters, searchTerm);
+                    return updatedCharacters;
+                });
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching characters:', error);
@@ -20,6 +27,17 @@ export default function CharactersScreen() {
         }
         fetchCharacters();
     }, [page]);
+
+    useEffect(() => {
+        filterCharacters(characters, searchTerm);
+    }, [characters, searchTerm]);
+
+    const filterCharacters = (characters, searchTerm) => {
+        const filtered = characters.filter(character =>
+            character.attributes.name.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+        setFilteredCharacters(filtered);
+    };
 
     const loadMore = () => {
         setPage(page + 1);
@@ -32,31 +50,34 @@ export default function CharactersScreen() {
             {loading ? (
                 <ActivityIndicator size="large" color="#0000ff" />
             ) : (
-                <FlatList
-                    data={characters}
-                    keyExtractor={(item) => item.wiki}
-                    renderItem={({ item }) => (
-                        <Pressable onPress={() => Linking.openURL(item.attributes.wiki)}>
-                            <View style={styles.card}>
+                <View>
+                    <SearchBar onChangeText={setSearchTerm} />
+                    <FlatList
+                        data={filteredCharacters} // Use filteredCharacters here
+                        keyExtractor={(item) => item.wiki}
+                        renderItem={({ item }) => (
+                            <Pressable onPress={() => Linking.openURL(item.attributes.wiki)}>
+                                <View style={styles.card}>
                                     {item.attributes.image ? (
                                         <Image source={{ uri: item.attributes.image }} style={styles.image} />
                                     ) : (
                                         <Image source={require('../assets/generic-character.png')} style={styles.image} />
                                     )}
                                     <Text style={styles.cardTitle}>{item.attributes.name}</Text>
-                            </View>
-                        </Pressable>
-                    )}
-                    onEndReached={loadMore}
-                    onEndReachedThreshold={0.1}
-                    onMomentumScrollBegin={() => setLoadingMore(false)}
-                    onMomentumScrollEnd={() => setLoadingMore(true)}
-                    ListFooterComponent={() => {
-                        return (
-                            loadingMore ? <ActivityIndicator size="large" color="#0000ff" /> : null
-                        );
-                    }}
-                />
+                                </View>
+                            </Pressable>
+                        )}
+                        onEndReached={loadMore}
+                        onEndReachedThreshold={0.1}
+                        onMomentumScrollBegin={() => setLoadingMore(false)}
+                        onMomentumScrollEnd={() => setLoadingMore(true)}
+                        ListFooterComponent={() => {
+                            return (
+                                loadingMore ? <ActivityIndicator size="large" color="#0000ff" /> : null
+                            );
+                        }}
+                    />
+                </View>
             )}
         </View>
     );
