@@ -1,8 +1,8 @@
-import SpeelsScreen from './screens/SpeelsScreen';
+import PotionsScreen from './screens/PotionsScreen';
 
 export default function App() {
   return (
-    <SpeelsScreen />
+    <PotionsScreen />
   );
 }
 
