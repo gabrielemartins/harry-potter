@@ -50,8 +50,10 @@ export default function SpellsScreen() {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.pageTitle}>Spells</Text>
-            <Text style={styles.pageSubtitle}>Are you a witch or what?</Text>
+            <View style={styles.header}>
+                <Text style={styles.pageTitle}>Spells</Text>
+                <Text style={styles.pageSubtitle}>Are you a witch or what?</Text>
+            </View>
             {error ? (
                 <Text style={styles.errorMessage}>{error}</Text>
             ) : loading ? (
@@ -65,7 +67,7 @@ export default function SpellsScreen() {
                         renderItem={({ item }) => (
                             <Pressable onPress={() => WebBrowser.openBrowserAsync(item.attributes.wiki)}>
                                 <View style={styles.card}>
-                                    <View style={styles.header}>
+                                    <View style={styles.cardHeader}>
                                         {item.attributes.image ? (
                                             <Image source={{ uri: item.attributes.image }} style={styles.image} />
                                         ) : (
@@ -98,20 +100,21 @@ export default function SpellsScreen() {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,   
+        flex: 1,
+    },
+    header: {
+        marginHorizontal: 30,   
+        marginTop: 70,
+        marginBottom: 30,
     },
     pageTitle: {
         color: '#8B41F2',
         fontWeight: 'bold',
         fontSize: 30,
-        marginHorizontal: 30,
-        marginTop: 70,
     },
     pageSubtitle: {
         color: '#48227D',
         fontSize: 14,
-        marginHorizontal: 30,
-        marginBottom: 30,
     },
     card: {
         flex: 1,
@@ -119,7 +122,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         padding: 25,
     },
-    header: {
+    cardHeader: {
         flex: 1,
         flexDirection: 'row',
         alignItems: 'center',
