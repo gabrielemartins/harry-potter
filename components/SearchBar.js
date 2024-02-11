@@ -6,7 +6,8 @@ export default function SearchBar({ onChangeText }) {
         <View>
            <TextInput 
                style={styles.input} 
-               placeholder="Search" 
+               placeholder="Search"
+               placeholderTextColor={'#ffffff'}
                onChangeText={onChangeText} 
            />
         </View>
