@@ -33,6 +33,11 @@ export default function HomeScreen() {
 
     return (
         <View style={styles.container}>
+            <View style={styles.header}>
+                <Text style={styles.pageTitle}>Hello, Gabriele</Text>
+                <Text style={styles.pageSubtitle}>What would you like to explore today?</Text>
+            </View>
+
             <Animated.ScrollView
                 horizontal
                 showsHorizontalScrollIndicator={false}
@@ -80,8 +85,22 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
+    header: {
+        marginTop: 90,
+        marginHorizontal: 20,
+    },
+    pageTitle: {
+        color: '#8B41F2',
+        fontWeight: 'bold',
+        fontSize: 40,
+    },
+    pageSubtitle: {
+        color: '#48227D',
+        fontSize: 16,
+    },
     menuCards: {
         marginTop: 20,
+       marginLeft: 5,
     },
     cardContainer: {
         width: CARD_WIDTH,
