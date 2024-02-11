@@ -17,12 +17,12 @@ const styles = StyleSheet.create({
     input: {
         color: '#ffffff',
         fontSize: 12,
-        padding: 3,
+        padding: 7,
         outlineStyle: 'none',
         borderWidth: 1,
         borderColor: '#8B41F2',
-        borderRadius: 10,
+        borderRadius: 15,
         marginHorizontal: 30,
-        marginBottom: 20,   
+        marginBottom: 40,   
     }
 });
