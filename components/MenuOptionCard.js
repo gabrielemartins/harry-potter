@@ -1,6 +1,8 @@
 import { View, Text, ImageBackground, StyleSheet, Pressable } from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 export default function MenuOptionCard(props) {
+    const navigation = useNavigation();
     return (
         <View style={styles.container}>
             <View style={styles.cardContainer}>
@@ -10,7 +12,7 @@ export default function MenuOptionCard(props) {
                         <Text style={styles.subtitle}>{props.subtitle}</Text>
                     </View>
                 </ImageBackground>
-                <Pressable onPress={() => {console.log("Pressed")}} style={styles.revelioButton}>
+                <Pressable onPress={() => {navigation.navigate(props.nextPage)}} style={styles.revelioButton}>
                     <Text style={styles.revelioButtonText}>Revelio</Text>
                 </Pressable>
             </View>
