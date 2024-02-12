@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FlatList, Text, View, ActivityIndicator, Image, StyleSheet, Pressable } from "react-native";
+import Header from "../components/Header";
 import * as WebBrowser from 'expo-web-browser';
 import SearchBar from "../components/SearchBar";
 import { getSpells } from "../Api";
@@ -55,10 +56,7 @@ export default function SpellsScreen() {
 
     return (
         <View style={styles.container}>
-            <View style={styles.header}>
-                <Text style={styles.pageTitle}>Spells</Text>
-                <Text style={styles.pageSubtitle}>Are you a witch or what?</Text>
-            </View>
+            <Header title="Spells" subtitle="Are you a witch or what?" />
             {error ? (
                 <Text style={styles.errorMessage}>{error}</Text>
             ) : loading ? (
@@ -106,20 +104,6 @@ export default function SpellsScreen() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-    },
-    header: {
-        marginHorizontal: 30,   
-        marginTop: 70,
-        marginBottom: 30,
-    },
-    pageTitle: {
-        color: '#8B41F2',
-        fontWeight: 'bold',
-        fontSize: 45,
-    },
-    pageSubtitle: {
-        color: '#48227D',
-        fontSize: 16,
     },
     card: {
         flex: 1,

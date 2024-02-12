@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FlatList, Text, View, ActivityIndicator, Image, StyleSheet, Pressable } from "react-native";
+import Header from "../components/Header";
 import * as WebBrowser from 'expo-web-browser';
 import SearchBar from "../components/SearchBar";
 import { getPotions } from "../Api";
@@ -47,7 +48,7 @@ export default function PotionsScreen() {
     };
 
     const loadMore = () => {
-        if (!loadingMore) { 
+        if (!loadingMore) {
             setLoadingMore(true);
             setPage(page + 1);
         }
@@ -56,10 +57,7 @@ export default function PotionsScreen() {
 
     return (
         <View style={styles.container}>
-            <View style={styles.header}>
-                <Text style={styles.pageTitle}>Potions</Text>
-                <Text style={styles.pageSubtitle}>There’s no need to call me ‘sir,’ Professor</Text>
-            </View>
+            <Header title="Potions" subtitle="There's no need to call me 'sir', Professor" />
             {error ? (
                 <Text style={styles.errorMessage}>{error}</Text>
             ) : loading ? (
@@ -106,20 +104,6 @@ export default function PotionsScreen() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-    },
-    header: {
-        marginHorizontal: 30,   
-        marginTop: 70,
-        marginBottom: 30,
-    },
-    pageTitle: {
-        color: '#8B41F2',
-        fontWeight: 'bold',
-        fontSize: 45,
-    },
-    pageSubtitle: {
-        color: '#48227D',
-        fontSize: 16,
     },
     card: {
         flex: 1,

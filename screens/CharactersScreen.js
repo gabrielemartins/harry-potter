@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FlatList, Text, View, ActivityIndicator, Image, StyleSheet, Linking, Pressable } from "react-native";
+import Header from "../components/Header";
 import * as WebBrowser from 'expo-web-browser';
 import SearchBar from "../components/SearchBar";
 import { getCharacters } from "../Api";
@@ -55,10 +56,7 @@ export default function CharactersScreen() {
 
     return (
         <View style={styles.container}>
-            <View style={styles.header}>
-                <Text style={styles.pageTitle}>Characters</Text>
-                <Text style={styles.pageSubtitle}>I swear I am not up to good</Text>
-            </View>
+            <Header title="Characters" subtitle="I swear I am not up to good" />
             {error ? (
                 <Text style={styles.errorMessage}>{error}</Text>
             ) : loading ? (
@@ -101,20 +99,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#ffffff',
-    },
-    header: {
-        marginHorizontal: 30,
-        marginTop: 30,
-        marginBottom: 30,
-    },
-    pageTitle: {
-        color: '#8B41F2',
-        fontWeight: 'bold',
-        fontSize: 40,
-    },
-    pageSubtitle: {
-        color: '#48227D',
-        fontSize: 16,
     },
     card: {
         flex: 1,
