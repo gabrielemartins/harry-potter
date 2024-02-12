@@ -98,7 +98,7 @@ export default function CharactersScreen() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#0F071A',
+        backgroundColor: '#ffffff',
     },
     pageTitle: {
         color: '#8B41F2',
