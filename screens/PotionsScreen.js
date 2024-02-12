@@ -10,7 +10,7 @@ export default function PotionsScreen() {
     const [searchTerm, setSearchTerm] = useState('');
     const [loading, setLoading] = useState(true);
     const [loadingMore, setLoadingMore] = useState(true);
-    const [page, setPage] = useState(0);
+    const [page, setPage] = useState(1);
     const [error, setError] = useState('');
 
     useEffect(() => {
