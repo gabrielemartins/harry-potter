@@ -15,7 +15,7 @@ export default function SearchBar({ onChangeText }) {
 
 const styles = StyleSheet.create({
     input: {
-        color: '#ffffff',
+        color: '#000000',
         fontSize: 12,
         padding: 7,
         outlineStyle: 'none',
