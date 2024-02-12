@@ -9,7 +9,7 @@ export default function SpellsScreen() {
     const [filteredSpells, setFilteredSpells] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [loading, setLoading] = useState(true);
-    const [loadingMore, setLoadingMore] = useState(true);
+    const [loadingMore, setLoadingMore] = useState(false);
     const [page, setPage] = useState(0);
     const [error, setError] = useState('');
 
@@ -23,11 +23,13 @@ export default function SpellsScreen() {
                     return updatedSpells;
                 });
                 setLoading(false);
+                setLoadingMore(false);
                 setError('');
             } catch (error) {
                 console.error('Error fetching spells:', error);
                 setError(error.message);
                 setLoading(false);
+                setLoadingMore(false);
             }
         }
         fetchSpells();
@@ -45,7 +47,10 @@ export default function SpellsScreen() {
     };
 
     const loadMore = () => {
-        setPage(page + 1);
+        if (!loadingMore) { 
+            setLoadingMore(true);
+            setPage(page + 1);
+        }
     };
 
     return (

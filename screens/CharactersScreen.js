@@ -9,7 +9,7 @@ export default function CharactersScreen() {
     const [filteredCharacters, setFilteredCharacters] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [loading, setLoading] = useState(true);
-    const [loadingMore, setLoadingMore] = useState(true);
+    const [loadingMore, setLoadingMore] = useState(false);
     const [page, setPage] = useState(0);
     const [error, setError] = useState('');
 
@@ -23,11 +23,13 @@ export default function CharactersScreen() {
                     return updatedCharacters;
                 });
                 setLoading(false);
+                setLoadingMore(false);
                 setError('');
             } catch (error) {
                 console.error('Error fetching characters:', error);
                 setError(error.message);
                 setLoading(false);
+                setLoadingMore(false);
             }
         }
         fetchCharacters();
@@ -45,7 +47,10 @@ export default function CharactersScreen() {
     };
 
     const loadMore = () => {
-        setPage(page + 1);
+        if (!loadingMore) {
+            setLoadingMore(true);
+            setPage(page + 1);
+        }
     };
 
     return (

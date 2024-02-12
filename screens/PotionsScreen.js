@@ -23,11 +23,13 @@ export default function PotionsScreen() {
                     return updatedPotions;
                 });
                 setLoading(false);
+                setLoadingMore(false);
                 setError('');
             } catch (error) {
                 console.error('Error fetching potions:', error);
                 setError(error.message);
                 setLoading(false);
+                setLoadingMore(false);
             }
         }
         fetchPotions();
@@ -45,8 +47,12 @@ export default function PotionsScreen() {
     };
 
     const loadMore = () => {
-        setPage(page + 1);
+        if (!loadingMore) { 
+            setLoadingMore(true);
+            setPage(page + 1);
+        }
     };
+
 
     return (
         <View style={styles.container}>
