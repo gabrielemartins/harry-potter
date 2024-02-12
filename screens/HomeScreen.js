@@ -21,11 +21,7 @@ const screens = {
         title: 'Potions',
         subtitle: 'List of all potions in the Harry Potter World.',
     },
-    books: {
-        image: require('../assets/books-background.jpg'),
-        title: 'Books',
-        subtitle: 'List of all books of the Harry Potter Series.',
-    },
+
 };
 
 export default function HomeScreen() {
@@ -72,7 +68,7 @@ export default function HomeScreen() {
                                 image={screen.image}
                                 title={screen.title}
                                 subtitle={screen.subtitle}
-                            />
+                            />                                                         
                         </Animated.View>
                     );
                 })}
@@ -100,7 +96,7 @@ const styles = StyleSheet.create({
     },
     menuCards: {
         marginTop: 20,
-       marginLeft: 5,
+        marginLeft: 5,
     },
     cardContainer: {
         width: CARD_WIDTH,
