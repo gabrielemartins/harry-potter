@@ -68,6 +68,7 @@ export default function HomeScreen() {
                                 image={screen.image}
                                 title={screen.title}
                                 subtitle={screen.subtitle}
+                                nextPage={screen.title}
                             />                                                         
                         </Animated.View>
                     );
