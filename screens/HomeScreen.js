@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     },
     cardContainer: {
         width: CARD_WIDTH,
-        height: '85%',
+        height: '80%',
         marginTop: 40,
     },
 });
