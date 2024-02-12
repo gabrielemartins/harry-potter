@@ -133,7 +133,8 @@ const styles = StyleSheet.create({
     cardTitle: {
         fontWeight: 'bold',
         fontSize: 16,
-        color: '#8B41F2'
+        color: '#8B41F2',
+        marginRight: 40,
     },
     errorMessage: {
         color:'#FF2314',
