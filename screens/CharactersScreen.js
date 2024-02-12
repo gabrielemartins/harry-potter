@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     },
     pageSubtitle: {
         color: '#48227D',
-        fontSize: 14,
+        fontSize: 16,
     },
     card: {
         flex: 1,
