@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     header: {
-        marginTop: 70,
+        marginTop: 110,
         marginHorizontal: 20,
     },
     pageTitle: {
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     menuCards: {
-        
+        marginTop: 20,
         marginLeft: 5,
     },
     cardContainer: {
