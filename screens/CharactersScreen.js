@@ -55,8 +55,10 @@ export default function CharactersScreen() {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.pageTitle}>Characters</Text>
-            <Text style={styles.pageSubtitle}>I swear I am not up to good</Text>
+            <View style={styles.header}>
+                <Text style={styles.pageTitle}>Characters</Text>
+                <Text style={styles.pageSubtitle}>I swear I am not up to good</Text>
+            </View>
             {error ? (
                 <Text style={styles.errorMessage}>{error}</Text>
             ) : loading ? (
@@ -100,18 +102,19 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#ffffff',
     },
+    header: {
+        marginHorizontal: 30,
+        marginTop: 30,
+        marginBottom: 30,
+    },
     pageTitle: {
         color: '#8B41F2',
         fontWeight: 'bold',
         fontSize: 40,
-        marginHorizontal: 30,
-        marginTop: 70,
     },
     pageSubtitle: {
         color: '#48227D',
         fontSize: 14,
-        marginHorizontal: 30,
-        marginBottom: 30,
     },
     card: {
         flex: 1,
