@@ -29,12 +29,12 @@ The characters page shows the user a list of characters from the Harry Potter se
 ![Characters Page](https://i.ibb.co/dB4V6WD/Characters-page.png)
 
 ### Spells
-The spells page shows the user a list of spells, its type and effect. The user can click on a spell to go to the spell's wiki page
+The spells page shows the user a list of spells, their type, and their effect. The user can click on a spell to go to the spell's wiki page
 
 ![Spells Page](https://i.ibb.co/n7VQTZt/Spells-page.png)
 
 ### Potions
-The potions page shows the user a list of potions and its effect. The user can click on a potion to go to the potion's wiki page
+The spells page shows the user a list of potion, and their effect. The user can click on a potion to go to the potion's wiki page
 
 ![Potions Page](https://i.ibb.co/G00J4NM/Potions-page.png)
 
